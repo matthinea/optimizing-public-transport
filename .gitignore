@@ -1,0 +1,7 @@
+consumers/__pycache__/*
+consumers/venv/*
+producers/__pycache__/*
+producers/env/*
+producers/models/__pycache__/*
+producers/venv/*
+
