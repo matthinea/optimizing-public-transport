@@ -78,6 +78,7 @@ class KafkaConsumer:
             if message is None:
                 return 0
             elif message.error() is None:
+                # logger.info("polled message in %s. Message: %s. Handler: %s. Topic: %s.", self.topic_name_pattern, message.value(), self.message_handler, message.topic())
                 self.message_handler(message)
                 return 1
             else:

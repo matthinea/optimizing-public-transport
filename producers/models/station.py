@@ -31,7 +31,7 @@ class Station(Producer):
 
         # (DONE)TODO: Complete the below by deciding on a topic name, number of partitions, and number of
         # replicas
-        topic_name = f"cta.status_dashboard.station.{station_name}" # (DONE)TODO: Come up with a better topic name
+        topic_name = f"cta.status_dashboard.station.arrivals{station_name}" # (DONE)TODO: Come up with a better topic name
         super().__init__(
             topic_name,
             key_schema=Station.key_schema,

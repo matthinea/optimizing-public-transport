@@ -56,7 +56,8 @@ def run_server():
     lines = Lines()
 
     application = tornado.web.Application(
-        [(r"/", MainHandler, {"weather": weather_model, "lines": lines})]
+        [(r"/", MainHandler, {"weather": weather_model, "lines": lines})],
+        debug=True
     )
     application.listen(8888)
 
@@ -74,7 +75,7 @@ def run_server():
             is_avro=False,
         ),
         KafkaConsumer(
-            "^cta.status_dashboard.station.*",
+            "^cta.status_dashboard.station.arrivals",
             lines.process_message,
             offset_earliest=True,
         ),
