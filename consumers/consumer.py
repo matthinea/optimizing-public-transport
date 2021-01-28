@@ -74,7 +74,7 @@ class KafkaConsumer:
         """Polls for a message. Returns 1 if a message was received, 0 otherwise"""
         # (DONE)TODO: Poll Kafka for messages. Make sure to handle any errors or exceptions.
         try:
-            message = self.consumer.poll()
+            message = self.consumer.poll(self.consume_timeout)
             if message is None:
                 return 0
             elif message.error() is None:
@@ -83,7 +83,7 @@ class KafkaConsumer:
             else:
                 raise message.error().code()
         except Exception as exc:
-            logger.info("error polling consumer: %s", exc)
+            logger.info("error polling consumer: %s %s", exc, self.topic_name_pattern)
 
     def close(self):
         """Cleans up any open kafka consumers"""

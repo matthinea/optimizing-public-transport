@@ -38,9 +38,7 @@ class Producer:
         # and use the Host URL for Kafka and Schema Registry!
         self.broker_properties = {
             'bootstrap.servers': self.KAFKA_URL,
-            'schema.registry.url': self.SCHEMA_REGISTRY_URL,
-            'auto.offset.reset': 'earliest',
-            'linger.ms': '500'
+            'schema.registry.url': self.SCHEMA_REGISTRY_URL
         }
 
         # If the topic does not already exist, try to create it

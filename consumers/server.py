@@ -74,7 +74,7 @@ def run_server():
             is_avro=False,
         ),
         KafkaConsumer(
-            "^cta.status_dashboard.station.",
+            "^cta.status_dashboard.station.*",
             lines.process_message,
             offset_earliest=True,
         ),
