@@ -4,6 +4,6 @@
   "namespace": "cta.status_dashboard",
   "fields": [
     { "name": "temperature", "type": "float" },
-    { "name": "status", "type": "string" }
+    { "name": "status", "type": "enum", "symbols": ["sunny", "partly_cloudy", "cloudy", "windy", "precipitation"] }
   ]
 }
