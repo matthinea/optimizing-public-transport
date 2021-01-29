@@ -46,13 +46,13 @@ class Turnstile(Producer):
         num_entries = self.turnstile_hardware.get_entries(timestamp, time_step)
         # (DONE)TODO: Complete this function by emitting a message to the turnstile topic for the number
         # of entries that were calculated
-        self.producer.produce(
-            topic=self.topic_name,
-            key={"timestamp": timestamp.timestamp() },
-            value={
-                "station_id": self.station.station_id,
-                "station_name": self.station.name,
-                "entries": num_entries,
-                "line": self.station.color.name
-            }
-        )
+        for _ in range(num_entries):
+            self.producer.produce(
+                topic=self.topic_name,
+                key={"timestamp": timestamp.timestamp() },
+                value={
+                    "station_id": self.station.station_id,
+                    "station_name": self.station.name,
+                    "line": self.station.color.name
+                }
+            )
