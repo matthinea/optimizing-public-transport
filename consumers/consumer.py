@@ -37,7 +37,8 @@ class KafkaConsumer:
         # and use the Host URL for Kafka and Schema Registry!
         self.broker_properties = {
             'bootstrap.servers': self.KAFKA_URL,
-            'group.id': 'hinea-group-id'
+            'group.id': 'hinea-group-id',
+            'auto.offset.reset':  'earliest' if self.offset_earliest else 'latest'
         }
 
         # (DONE)TODO: Create the Consumer, using the appropriate type.
