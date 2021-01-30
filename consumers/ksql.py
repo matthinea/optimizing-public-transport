@@ -25,7 +25,6 @@ KSQL_STATEMENT = """
 CREATE TABLE turnstile (
     station_id INT,
     station_name VARCHAR,
-    entries INT,
     line VARCHAR
 ) WITH (
     KAFKA_TOPIC='cta.status_dashboard.turnstiles',
@@ -35,11 +34,10 @@ CREATE TABLE turnstile (
 
 CREATE TABLE turnstile_summary
 WITH (VALUE_FORMAT='JSON') AS
-    SELECT station_id, SUM(entries) AS count
+    SELECT station_id, COUNT(station_id) AS count
     FROM turnstile
     GROUP BY station_id;
 """
-
 
 def execute_statement():
     """Executes the KSQL statement against the KSQL API"""
